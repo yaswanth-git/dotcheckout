@@ -8,7 +8,6 @@ function App() {
   const [postDetails, setPostDetails] = useState({});
   const [modalStage, setModalStage] = useState(0);
   const [otp, setOtp] = useState('');
-  const [isVerified, setIsVerified] = useState(false);
   const [ticketsData, setTicketsData] = useState([]);
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [search, setSearch] = useState('');
@@ -31,7 +30,7 @@ function App() {
   const postTicket = async (e) => {
     e.preventDefault()
     try {
-      const temp = await fetch('http://cms.dotcheckout.com/movies', {
+      await fetch('http://cms.dotcheckout.com/movies', {
         method: 'POST',
         redirect: 'follow',
         body: JSON.stringify({
@@ -49,7 +48,6 @@ function App() {
       setModalStage(0)
       setNumber('+91')
       setOtp('')
-      setIsVerified(false)
       setPostDetails({})
       setShowSignupModal(false)
     } catch (err) {
@@ -76,7 +74,7 @@ function App() {
       method: 'GET',
       redirect: 'follow'
     });
-    const data = await temp.json(); http://sms.dotcheckout.com/bms/send?mobile=9642668068
+    const data = await temp.json()
     data.forEach((ticket) => {
       if (ticket.show_time) {
         ticket.show_time = ticket.show_time.split(':').slice(0, 2);
@@ -113,6 +111,7 @@ function App() {
   }
   useEffect(() => {
     fetchTicketsData()
+    // eslint-disable-next-line
   }, [])
   return (
     <div className="App">
@@ -120,7 +119,7 @@ function App() {
         <div className="logo">Tic<span>X</span></div>
         <div className="search-bar">
           <input type='text' className="search" placeholder='Search by movie name' onChange={(e) => setSearch(e.target.value)} />
-          <img src={searchIcon} width={20} height={20} className="search-icon" />
+          <img src={searchIcon} alt="search" width={20} height={20} className="search-icon" />
         </div>
         <div>
           <button className='sell-button' onClick={() => setShowSignupModal(true)}>+Sell Ticket</button>
@@ -148,7 +147,6 @@ function App() {
                   <td>{ticket.price_per_ticket}</td>
                   <td>{ticket.show_date}, {ticket.show_time}</td>
                   <td><a className='link'>View Contact</a></td>
-                  {/* <td>{ticket.listed_by_contact}</td> */}
                 </tr>
               ))}
             </tbody>
@@ -203,7 +201,7 @@ function App() {
                     return pre
                   })} /></div>
                   <div>Add Image</div>
-                  <div><input type='image' value={postDetails.img} onChange={(e) => setPostDetails((pre) => {
+                  <div><input type='image' alt="magic" value={postDetails.img} onChange={(e) => setPostDetails((pre) => {
                     pre.img = e.target.value
                     return pre
                   })} /></div>
