@@ -15,7 +15,7 @@ function App() {
   const getOtp = async (e) => {
     e.preventDefault()
     try {
-      const temp = await fetch(`http://sms.dotcheckout.com/bms/send?mobile=${number.slice(3)}`, {
+      const temp = await fetch(`https://sms.dotcheckout.com/bms/send?mobile=${number.slice(3)}`, {
         method: 'POST',
         redirect: 'follow'
       })
@@ -30,7 +30,7 @@ function App() {
   const postTicket = async (e) => {
     e.preventDefault()
     try {
-      await fetch('http://cms.dotcheckout.com/movies', {
+      await fetch('https://cms.dotcheckout.com/movies', {
         method: 'POST',
         redirect: 'follow',
         body: JSON.stringify({
@@ -57,7 +57,7 @@ function App() {
   const verifyOtp = async (e) => {
     e.preventDefault()
     try {
-      const temp = await fetch(`http://sms.dotcheckout.com/bms/verify?mobile=${number.slice(3)}&otp=${otp}`, {
+      const temp = await fetch(`https://sms.dotcheckout.com/bms/verify?mobile=${number.slice(3)}&otp=${otp}`, {
         method: 'POST',
         redirect: 'follow'
       });
