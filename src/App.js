@@ -146,7 +146,7 @@ function App() {
                   <td>{ticket.theatre_location}</td>
                   <td>{ticket.price_per_ticket}</td>
                   <td>{ticket.show_date}, {ticket.show_time}</td>
-                  <td><a className='link'>View Contact</a></td>
+                  <td><div className='link'>View Contact</div></td>
                 </tr>
               ))}
             </tbody>
