@@ -139,7 +139,7 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              {ticketsData.filter((ticket) => ticket.movie_name.includes(search)).map((ticket) => (
+              {ticketsData.filter((ticket) => ticket.movie_name.toLowerCase().includes(search.toLowerCase())).map((ticket) => (
                 <tr key={ticket.id}>
                   <td>{ticket.movie_name}</td>
                   <td>{ticket.no_of_tickets}</td>
